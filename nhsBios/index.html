@@ -15,6 +15,12 @@
 		<title>BHS NHS Tutoring Website</title>
 	</head>
 	<body>
+<header></header>
+<script src="addHeader.js" charset="utf-8"></script>
+<div id="page-container">
+
+	<div id="content-container">
+		
 <div class="jumbotron">
   <h1 class="display-4">BHS NHS Tutoring Website</h1>
 	<h6>Contact Alek Westover at computer.emailer@gmail.com with any problems with the website</h6>
@@ -24,9 +30,22 @@
 
 <h1>Find a Tutor:</h1>
 <!-- Make sure the form has the autocomplete function switched off: -->
+<h3>Search By Name:</h3>
 <form autocomplete="off">
 	<div class="autocomplete" style="width:300px;">
-		<input id="myInput" type="text" name="name" placeholder="Name">
+		<input id="searchByName" type="text" name="name" placeholder="Name">
+	</div>
+</form>
+<h3>Search By Subject:</h3>
+<form autocomplete="off">
+	<div class="autocomplete" style="width:300px;">
+		<input id="searchBySubject" type="text" name="name" placeholder="Name">
+	</div>
+</form>
+<h3>Search By Mod:</h3>
+<form autocomplete="off">
+	<div class="autocomplete" style="width:300px;">
+		<input id="searchByMod" type="text" name="name" placeholder="Name">
 	</div>
 </form>
 <script src="autocompleteFunction.js" charset="utf-8"></script>
@@ -2028,14 +2047,10 @@
 
 <!-- ////////////////////////////////////////////////////////////////////// -->
 </div>
+<div id="searchByModResults"> </div>
+<div id="searchBySubjectResults"> </div>
+</div>
 
-
-	<div class="container">
-		<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7TOzt2XerwCVtx4j0UFfyO7KrCHROV5naretHMS-AKR-XwUT0D0DOZ2W-oPIaZLfmNiIEgbzlcyhF/pubhtml?gid=126146715&amp;single=true&amp;widget=true&amp;headers=false" width=100% height=500px></iframe>
-	</div>
-	<div class="container">
-		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdKdmGqibDvJeRAB2j8_wAvwIIuU4QZ1liI1_0Iby6fEVUNFg/viewform?embedded=true" width="640" height="940" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-	</div>
 
 	<footer class="bg-dark">
     <div class="container text-center">
@@ -2043,5 +2058,7 @@
 			<img src="dog1.png" alt="dog">
     </div>
   </footer>
+</div>
+
 	</body>
 </html>
