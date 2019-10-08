@@ -16,13 +16,18 @@
     - the one stipulation is that it means that I will have to force people to spell their names right in the document!!
 
 # Possible features
-  * tutor sign in
-  * a legit domain name
-  * sign up for tutoring
-  * use google api so that we are secretly using a google form instead of overtly using it
-  * style it up
-  * view bios
-  * search for people
-  * search for topics
-  * rate people 
+## better interface than the crumbly embeded google form and google sheet!
+  * google sheets api... 
+  * or Heroku... 
+    * postgres
+    * sqlLite
+## tutor sign in
+## a legit domain name
+## sign up for tutoring
+## style it up
+## view bios
+## search for people
+## search for topics
+## rate people??
+## don't have the disgusting copy pasted website in there...
 

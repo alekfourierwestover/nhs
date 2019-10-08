@@ -1,6 +1,9 @@
-function spaceNameToId(space_name){
-	return "#"+space_name.replace(" ", "_");
+// the clicking stuff for the autocomplete is CRAP. fix it later maybe?
+ 
+function spaceNameToUnderscores(space_name){
+	return space_name.replace(" ", "_");
 }
+
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -9,7 +12,8 @@ function autocomplete(inp, arr) {
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
 			killppl();
-      var a, b, i, val = this.value;
+      var val = this.value;
+			var a,b;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
       if (!val) { return false;}
@@ -22,32 +26,28 @@ function autocomplete(inp, arr) {
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
+      for (let name = 0; name < arr.length; name++) {
         /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (arr[name].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
-					b.id = arr[i];
+					b.id = "list_"+spaceNameToUnderscores(arr[name]);
           /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
+          b.innerHTML = "<strong>" + arr[name].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[name].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.innerHTML += "<input type='hidden' value='" + arr[name] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
+              /*close the list of autocompleted values, (or any other open lists of autocompleted values:*/
 							killppl();
               closeAllLists();
-							$(spaceNameToId(b.id)).css("display", "");
-
+							$("#"+spaceNameToUnderscores(inp.value)).css("display", "");
           });
           a.appendChild(b);
-					
-					$(spaceNameToId(arr[i])).css("display", "");
-
+					$("#"+spaceNameToUnderscores(arr[name])).css("display", "");
         }
       }
   });
@@ -92,31 +92,27 @@ function autocomplete(inp, arr) {
       x[i].classList.remove("autocomplete-active");
     }
   }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
-    }
+  function closeAllLists() {
+		var x = document.getElementsByClassName("autocomplete-items");
+		for (var i = 0; i < x.length; i++){ 
+			x[i].parentNode.removeChild(x[i]);
+		}
   }
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
+			closeAllLists();
   });
 }
 
 /*An array containing all the country names in the world:*/
-let names = ["Nadia Baghdady", "Anna Biondo", "Matthew Brody", "Molly Calkins", "Meredith Chasse", "Melina Chen", "Ziyong Cui", "Catherine Cunningham", "Anthony DeMarco", "Katherine Devitt", "Anna Doherty", "Justin Dong", "Leon Fan", "Caroline Findlay", "Matthew Fiore", "Ani Ganjian", "Julia Giatrelis", "Ilana Gut", "Alice Guyumdzhyan", "Joy He", "Joseph Hurley", "Gilchrist Imboywa", "Luke Jackson", "Adrine Kaligian", "Emily Kim", "Madeline Kitch", "Isabelle Lefebvre", "David Leigh", "Victoria Lesser", "Maya Logan", "Kathryn Magno", "Maya Manela", "Romi Manela", "Sara Manganelli", "Ella Miller", "Paul Muser", "Lila Newberry", "Maiah Newell", "Charlotte Nilsen", "Meaghan Noone", "Matt O\\'Connell-Vale", "Margaret O\\'Connor", "Seong Hyeon Park", "Grace Patrone", "Michael Pizzuto", "Valentine Reynolds", "Kara Rowan", "Emily Sabia", "Migena Satyal", "Ella Serrano-Wu", "Emmett Smith", "Heather Sorenson", "Cheyenne Stringfellow", "Chloe Sturgeon", "Emma Sutherland", "Anvitha Veeragandham", "Shankar Veludandi", "Allan Wang", "Samantha Widdison", "Yanzhe Xu", "Lydia Yoon", "Abigail Yu", "Olivia Zarkadas", "Hongyi Zhang"];
+let names = ["Nadia Baghdady", "Anna Biondo", "Matthew Brody", "Molly Calkins", "Meredith Chasse", "Melina Chen", "Ziyong Cui", "Catherine Cunningham", "Anthony DeMarco", "Katherine Devitt", "Anna Doherty", "Justin Dong", "Leon Fan", "Caroline Findlay", "Matthew Fiore", "Ani Ganjian", "Julia Giatrelis", "Ilana Gut", "Alice Guyumdzhyan", "Joy He", "Joseph Hurley", "Gilchrist Imboywa", "Luke Jackson", "Adrine Kaligian", "Emily Kim", "Madeline Kitch", "Isabelle Lefebvre", "David Leigh", "Victoria Lesser", "Maya Logan", "Kathryn Magno", "Maya Manela", "Romi Manela", "Sara Manganelli", "Ella Miller", "Paul Muser", "Lila Newberry", "Maiah Newell", "Charlotte Nilsen", "Meaghan Noone", "Matt OConnell-Vale", "Margaret OConnor", "Seong Hyeon Park", "Grace Patrone", "Michael Pizzuto", "Valentine Reynolds", "Kara Rowan", "Emily Sabia", "Migena Satyal", "Ella Serrano-Wu", "Emmett Smith", "Heather Sorenson", "Cheyenne Stringfellow", "Chloe Sturgeon", "Emma Sutherland", "Anvitha Veeragandham", "Shankar Veludandi", "Allan Wang", "Alek Westover", "Samantha Widdison", "Andrew Xu", "Lydia Yoon", "Abigail Yu", "Olivia Zarkadas", "Hongyi Zhang"];
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the names array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), names);
 
 function killppl(){
 	for (let i = 0; i < names.length; i++){
-		$(spaceNameToId(names[i])).css("display", "none");
+		$("#"+spaceNameToUnderscores(names[i])).css("display", "none");
 	}
 }
 

@@ -35,6 +35,7 @@ for part in partitioned_tags:
             current_person += stag
     separate_people.append(current_person)
 
+print(names)
 total = ""
 for i in range(len(separate_people)):
     curId = str(i)
@@ -43,13 +44,15 @@ for i in range(len(separate_people)):
             curId = name
             curId = curId.replace(" ", "_")
             break
+    if curId == str(i):
+        print(separate_people[i])
 
     total += f'<div style="display:none" class="row" id="{curId}">\n'
     total += '<div class="col col-11">\n'
     total += separate_people[i]
     total += "</div>\n"
     total += '<div class="col-1">\n'
-    total += f"<button>Schedule<br>Appointment<br>With<br>{curId.replace('_',' ')}</button> "
+    total += f"<button onclick='window.scrollTo(0,document.body.scrollHeight);'>Schedule<br>Appointment<br>With<br>{curId.replace('_',' ')}</button> "
     total += '</div>'
     total += '\n</div>'
     total += "\n\n\n\n\n"
