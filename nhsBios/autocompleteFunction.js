@@ -221,3 +221,16 @@ function() {
 },
 "anywhere");
 
+function handleNavClick(whichId){
+	let possibles = ["searchByName", "searchBySubject", "searchByMod"];
+	for (let i in possibles)
+		$("#nav_"+possibles[i]).removeClass("active");
+	$("#nav_"+whichId).addClass("active");
+
+	for (let i in possibles)
+		$("#"+possibles[i]+"-container").css("display", "none");
+	$("#"+whichId+"-container").css("display", "");
+
+}
+
+

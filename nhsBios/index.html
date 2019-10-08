@@ -19,7 +19,7 @@
 <script src="addHeader.js" charset="utf-8"></script>
 <div id="page-container">
 
-	<div id="content-container">
+<div id="content-container">
 		
 <div class="jumbotron">
   <h1 class="display-4">BHS NHS Tutoring Website</h1>
@@ -29,26 +29,45 @@
 <div class="container">
 
 <h1>Find a Tutor:</h1>
-<!-- Make sure the form has the autocomplete function switched off: -->
-<h3>Search By Name:</h3>
-<form autocomplete="off">
-	<div class="autocomplete" style="width:300px;">
-		<input id="searchByName" type="text" name="name" placeholder="Name">
-	</div>
-</form>
+
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link active" href="#" id="nav_searchByName" onclick="handleNavClick('searchByName')">Search By Name</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" id="nav_searchBySubject" onclick="handleNavClick('searchBySubject')">Search By Subject</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" id="nav_searchByMod" onclick="handleNavClick('searchByMod')">Search By Mod</a>
+  </li>
+</ul>
+
+<div id="searchBySubject-container" style="display: none">
 <h3>Search By Subject:</h3>
 <form autocomplete="off">
 	<div class="autocomplete" style="width:300px;">
 		<input id="searchBySubject" type="text" name="name" placeholder="Name">
 	</div>
 </form>
+<div id="searchBySubjectResults"> </div>
+</div>
+<div id="searchByMod-container" style="display: none">
 <h3>Search By Mod:</h3>
 <form autocomplete="off">
 	<div class="autocomplete" style="width:300px;">
 		<input id="searchByMod" type="text" name="name" placeholder="Name">
 	</div>
 </form>
-<script src="autocompleteFunction.js" charset="utf-8"></script>
+<div id="searchByModResults"> </div>
+</div>
+
+<div id="searchByName-container">
+<h3>Search By Name:</h3>
+<form autocomplete="off">
+	<div class="autocomplete" style="width:300px;">
+		<input id="searchByName" type="text" name="name" placeholder="Name">
+	</div>
+</form>
 
 <!-- ////////////////////////////////////////////////////////////////////// -->
 
@@ -2047,8 +2066,7 @@
 
 <!-- ////////////////////////////////////////////////////////////////////// -->
 </div>
-<div id="searchByModResults"> </div>
-<div id="searchBySubjectResults"> </div>
+</div>
 </div>
 
 
@@ -2060,5 +2078,6 @@
   </footer>
 </div>
 
+<script src="autocompleteFunction.js" charset="utf-8"></script>
 	</body>
 </html>
